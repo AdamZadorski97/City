@@ -21,11 +21,7 @@ public class BuildController : MonoBehaviour
 
         if (Input.GetMouseButtonDown(0))
         {
-            if (tempBuildingInstance == null)
-            {
-                StartPlacingBuilding();
-            }
-            else if (tempBuildingInstance != null && CheckCanBuild())
+            if (tempBuildingInstance != null && CheckCanBuild())
             {
                 PlaceBuilding();
                 Destroy(tempBuildingInstance);
@@ -101,20 +97,15 @@ public class BuildController : MonoBehaviour
         }
         return true;
     }
-
-    private void StartPlacingBuilding()
+    private GameObject tempBuilding;
+    public void StartPlacingBuilding(GameObject building)
     {
-        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-        RaycastHit hit;
-        int layerMask = 1 << LayerMask.NameToLayer("TemporaryBuilding");
-        layerMask = ~layerMask;
 
-        if (Physics.Raycast(ray, out hit, Mathf.Infinity, layerMask))
-        {
-            tempBuildingInstance = Instantiate(buildingPrefab, hit.point, Quaternion.identity);
-            tempBuildingInstance.layer = LayerMask.NameToLayer("TemporaryBuilding");
-            UpdateTempBuildingPosition();
-        }
+        tempBuilding = building;
+        tempBuildingInstance = Instantiate(building, Vector3.zero, Quaternion.identity);
+        tempBuildingInstance.layer = LayerMask.NameToLayer("TemporaryBuilding");
+        UpdateTempBuildingPosition();
+
     }
 
     private void UpdateTempBuildingPosition()
@@ -172,11 +163,11 @@ public class BuildController : MonoBehaviour
             {
                 Vector3 placementPosition = tempBuildingInstance.transform.position;
                 Quaternion placementRotation = tempBuildingInstance.transform.rotation;
-                GameObject buildingInstance = Instantiate(buildingPrefab, placementPosition, placementRotation);
+                GameObject buildingInstance = Instantiate(tempBuilding, placementPosition, placementRotation);
             }
             else
             {
-                GameObject buildingInstance = Instantiate(buildingPrefab, tempBuildingInstance.transform.position, Quaternion.identity);
+                GameObject buildingInstance = Instantiate(tempBuilding, tempBuildingInstance.transform.position, Quaternion.identity);
             }
             Destroy(tempBuildingInstance);
             tempBuildingInstance = null;
