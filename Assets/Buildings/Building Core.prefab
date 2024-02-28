@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 878988261077683457}
   - component: {fileID: 5853666717770657603}
   - component: {fileID: 2518208880194491247}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Text (TMP)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -197,7 +197,7 @@ GameObject:
   - component: {fileID: 2327506607100003896}
   - component: {fileID: 762787728479122142}
   - component: {fileID: -5832777667449995451}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Building Core
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -303,5 +303,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4609d4c4edc2637479e7fc5a7cce8f6a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buildingProperties: {fileID: 0}
   cost: {fileID: 0}

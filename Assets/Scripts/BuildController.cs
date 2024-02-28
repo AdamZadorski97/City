@@ -4,13 +4,14 @@ using UnityEngine;
 public class BuildController : MonoBehaviour
 {
     public static BuildController Instance { get; private set; }
-    [SerializeField] private GameObject buildingPrefab;
     [SerializeField] private Material canBuildMaterial;
     [SerializeField] private Material cantBuildMaterial;
     [SerializeField] private float scrollSensitivity = 10f;
 
+    private GameObject tempExistingBuilding;
     private GameObject tempBuildingInstance;
     private Vector3 lastMousePosition;
+    public bool isNewBuilding;
     private void Awake()
     {
         // If there is no instance already, this becomes the singleton instance
@@ -35,11 +36,26 @@ public class BuildController : MonoBehaviour
 
         if (Input.GetMouseButtonDown(0))
         {
-            if (tempBuildingInstance != null && CheckCanBuild() && EconomyController.Instance.UseResources(tempBuilding.GetComponent<BuildingCore>().cost))
+            if (tempBuildingInstance != null && CheckCanBuild())
             {
-                PlaceBuilding();
-                Destroy(tempBuildingInstance);
-                tempBuildingInstance = null;
+                Debug.Log(isNewBuilding);
+                if (isNewBuilding && EconomyController.Instance.HasEnoughResources(tempBuilding.GetComponent<BuildingCore>().cost))
+
+                {
+                    EconomyController.Instance.UseResources(tempBuilding.GetComponent<BuildingCore>().cost);
+                    PlaceBuilding();
+                    Destroy(tempBuildingInstance);
+                    tempBuildingInstance = null;
+                }
+                else if (!isNewBuilding)
+                {
+                    PlaceBuilding();
+                    Destroy(tempExistingBuilding);
+                    Destroy(tempBuildingInstance);
+                    tempBuildingInstance = null;
+                }
+
+              
             }
         }
 
@@ -114,7 +130,7 @@ public class BuildController : MonoBehaviour
     private GameObject tempBuilding;
     public void StartPlacingBuilding(GameObject building)
     {
-
+      
         tempBuilding = building;
         tempBuildingInstance = Instantiate(building, Vector3.zero, Quaternion.identity);
         tempBuildingInstance.layer = LayerMask.NameToLayer("TemporaryBuilding");
@@ -122,28 +138,29 @@ public class BuildController : MonoBehaviour
 
     }
 
-    private void UpdateTempBuildingPosition()
-    {
-        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-        RaycastHit hit;
-        int layerMask = ~LayerMask.GetMask("TemporaryBuilding");
+   private void UpdateTempBuildingPosition()
+{
+    Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+    RaycastHit hit;
+    int layerMask = ~LayerMask.GetMask("TemporaryBuilding");
 
-        if (Physics.Raycast(ray, out hit, Mathf.Infinity, layerMask) && tempBuildingInstance != null)
+    if (Physics.Raycast(ray, out hit, Mathf.Infinity, layerMask) && tempBuildingInstance != null)
+    {
+        Collider buildingCollider = tempBuildingInstance.GetComponent<Collider>();
+        if (buildingCollider != null)
         {
-            Collider buildingCollider = tempBuildingInstance.GetComponent<Collider>();
-            if (buildingCollider != null)
-            {
-                float bottomOffset = buildingCollider.bounds.extents.y;
-                Vector3 adjustedPosition = hit.point + new Vector3(0, bottomOffset, 0);
-                tempBuildingInstance.transform.position = adjustedPosition;
-            }
-            else
-            {
-                tempBuildingInstance.transform.position = hit.point;
-            }
-            UpdateBuildingMaterial(CheckCanBuild());
+            // Calculate bottom offset for both new and existing buildings
+            float bottomOffset = buildingCollider.bounds.extents.y;
+            Vector3 adjustedPosition = hit.point + new Vector3(0, bottomOffset, 0);
+            tempBuildingInstance.transform.position = adjustedPosition;
         }
+        else
+        {
+            tempBuildingInstance.transform.position = hit.point;
+        }
+        UpdateBuildingMaterial(CheckCanBuild());
     }
+}
 
     private void RotateTemporaryBuilding(float scrollAmount)
     {
@@ -186,5 +203,12 @@ public class BuildController : MonoBehaviour
             Destroy(tempBuildingInstance);
             tempBuildingInstance = null;
         }
+    }
+
+    public void MoveExistingBuilding(GameObject buildingToMove)
+    {
+        tempExistingBuilding = buildingToMove;
+        isNewBuilding = false;
+        StartPlacingBuilding(buildingToMove);
     }
 }

@@ -13,6 +13,7 @@ public class ButtonBuilding : MonoBehaviour
         if (EconomyController.Instance.HasEnoughResources(buildingCore.cost))
         {
             BuildController.Instance.StartPlacingBuilding(buildingPrefab);
+            BuildController.Instance.isNewBuilding = true;
         }
     }
 }
