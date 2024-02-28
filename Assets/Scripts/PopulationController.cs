@@ -25,23 +25,40 @@ public class PopulationController : MonoBehaviour
     }
 
 
-    public int CheckPopulation()
+    public int CheckCurrentPopulation()
     {
-        int tempPopulation = 0;
+        int tempCurrentPopulation = 0;
         foreach (BuildingCore buildingCore in BuildController.Instance.buildings)
         {
             if (buildingCore.GetComponent<HouseController>() != null)
             {
 
-                tempPopulation += buildingCore.GetComponent<HouseController>().currentPopulation;
-                Debug.Log(tempPopulation);
+                tempCurrentPopulation += buildingCore.GetComponent<HouseController>().currentPopulation;
             }
         }
-        return tempPopulation;
+        return tempCurrentPopulation;
+    }
+
+    public int CheckUsedPopulation()
+    {
+        int tempUsedPopulation = 0;
+        foreach (BuildingCore buildingCore in BuildController.Instance.buildings)
+        {
+            tempUsedPopulation += buildingCore.cost.population;
+        }
+        return tempUsedPopulation;
+    }
+
+    public bool CheckPopulationUsage(int value)
+    {
+        if (CheckCurrentPopulation() - CheckUsedPopulation() - value < 0)
+            return false;
+        else return true;
+
     }
 
     public void UpdatePopulation()
     {
-        textPopulation.text = $"Population: {CheckPopulation()}";
+        textPopulation.text = $"Population: {CheckCurrentPopulation()}/{CheckUsedPopulation()}";
     }
 }

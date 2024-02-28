@@ -10,7 +10,7 @@ public class ButtonBuilding : MonoBehaviour
     {
         BuildingCore buildingCore = buildingPrefab.GetComponent<BuildingCore>();
 
-        if (EconomyController.Instance.HasEnoughResources(buildingCore.cost))
+        if (EconomyController.Instance.HasEnoughResources(buildingCore.cost) && PopulationController.Instance.CheckPopulationUsage(buildingCore.cost.population))
         {
             BuildController.Instance.StartPlacingBuilding(buildingPrefab);
             BuildController.Instance.isNewBuilding = true;

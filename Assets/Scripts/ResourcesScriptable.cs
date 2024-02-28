@@ -9,4 +9,5 @@ public class ResourcesScriptable : ScriptableObject
     public int wood;
     public int stone;
     public int iron;
+    public int population;
 }
