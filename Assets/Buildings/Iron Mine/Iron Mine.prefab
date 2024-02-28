@@ -8,13 +8,21 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3700906419578815829, guid: eb80829a543c1bb45b3a132edfd0904b, type: 3}
+      propertyPath: cost
+      value: 
+      objectReference: {fileID: 11400000, guid: d33fb84fdb5a1504d8958b4aa3db1d4d, type: 2}
     - target: {fileID: 4141736707573273647, guid: eb80829a543c1bb45b3a132edfd0904b, type: 3}
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+    - target: {fileID: 4331754446010252328, guid: eb80829a543c1bb45b3a132edfd0904b, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 8adbf17ce656b5f4c8245432bbe2380a, type: 2}
     - target: {fileID: 8933052058935025522, guid: eb80829a543c1bb45b3a132edfd0904b, type: 3}
       propertyPath: m_Name
-      value: Shop
+      value: Iron Mine
       objectReference: {fileID: 0}
     - target: {fileID: 9143092123785081014, guid: eb80829a543c1bb45b3a132edfd0904b, type: 3}
       propertyPath: m_LocalPosition.x

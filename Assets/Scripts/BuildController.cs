@@ -3,6 +3,7 @@ using UnityEngine;
 
 public class BuildController : MonoBehaviour
 {
+    public static BuildController Instance { get; private set; }
     [SerializeField] private GameObject buildingPrefab;
     [SerializeField] private Material canBuildMaterial;
     [SerializeField] private Material cantBuildMaterial;
@@ -10,7 +11,20 @@ public class BuildController : MonoBehaviour
 
     private GameObject tempBuildingInstance;
     private Vector3 lastMousePosition;
-
+    private void Awake()
+    {
+        // If there is no instance already, this becomes the singleton instance
+        if (Instance == null)
+        {
+            Instance = this;
+            DontDestroyOnLoad(gameObject); // Optionally keep this object alive when changing scenes
+        }
+        else if (Instance != this)
+        {
+            // If an instance already exists and it's not this, destroy this instance
+            Destroy(gameObject);
+        }
+    }
     private void Update()
     {
         bool mouseMoved = Input.mousePosition != lastMousePosition;
@@ -21,7 +35,7 @@ public class BuildController : MonoBehaviour
 
         if (Input.GetMouseButtonDown(0))
         {
-            if (tempBuildingInstance != null && CheckCanBuild())
+            if (tempBuildingInstance != null && CheckCanBuild() && EconomyController.Instance.UseResources(tempBuilding.GetComponent<BuildingCore>().cost))
             {
                 PlaceBuilding();
                 Destroy(tempBuildingInstance);
