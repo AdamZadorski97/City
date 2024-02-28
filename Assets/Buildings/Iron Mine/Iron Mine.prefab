@@ -8,6 +8,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2171239641832609897, guid: eb80829a543c1bb45b3a132edfd0904b, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0.617
+      objectReference: {fileID: 0}
     - target: {fileID: 3700906419578815829, guid: eb80829a543c1bb45b3a132edfd0904b, type: 3}
       propertyPath: cost
       value: 
@@ -20,6 +24,14 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 8adbf17ce656b5f4c8245432bbe2380a, type: 2}
+    - target: {fileID: 4513720601000601983, guid: eb80829a543c1bb45b3a132edfd0904b, type: 3}
+      propertyPath: m_text
+      value: Iron Mine
+      objectReference: {fileID: 0}
+    - target: {fileID: 8249909230243391526, guid: eb80829a543c1bb45b3a132edfd0904b, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8933052058935025522, guid: eb80829a543c1bb45b3a132edfd0904b, type: 3}
       propertyPath: m_Name
       value: Iron Mine
@@ -64,7 +76,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 8249909230243391526, guid: eb80829a543c1bb45b3a132edfd0904b, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []

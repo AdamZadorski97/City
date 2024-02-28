@@ -20,6 +20,10 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 0d9d53938ffbe094a9b3645ad7d280bb, type: 2}
+    - target: {fileID: 2518208880194491247, guid: 4e2dc19ee68a9ab479b45f095fb98355, type: 3}
+      propertyPath: m_text
+      value: House
+      objectReference: {fileID: 0}
     - target: {fileID: 7112103564014209702, guid: 4e2dc19ee68a9ab479b45f095fb98355, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -67,5 +71,27 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 7469535396018136418, guid: 4e2dc19ee68a9ab479b45f095fb98355, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 4525857802447245103}
   m_SourcePrefab: {fileID: 100100000, guid: 4e2dc19ee68a9ab479b45f095fb98355, type: 3}
+--- !u!1 &3984015004179839099 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7469535396018136418, guid: 4e2dc19ee68a9ab479b45f095fb98355, type: 3}
+  m_PrefabInstance: {fileID: 5828518112578313497}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &4525857802447245103
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3984015004179839099}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ac05f52e908a0849aedb6e3e0225775, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentPopulation: 0
+  maxPopulation: 20

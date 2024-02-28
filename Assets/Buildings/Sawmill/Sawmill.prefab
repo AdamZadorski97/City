@@ -56,6 +56,10 @@ PrefabInstance:
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
+    - target: {fileID: 4953171066107421257, guid: 139f38b19184350448b6d3bf2c0321c0, type: 3}
+      propertyPath: m_text
+      value: SawMill
+      objectReference: {fileID: 0}
     - target: {fileID: 5045084469958768414, guid: 139f38b19184350448b6d3bf2c0321c0, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
@@ -64,7 +68,9 @@ PrefabInstance:
       propertyPath: cost
       value: 
       objectReference: {fileID: 11400000, guid: 3f61afcd2306cf5449f567da53ba25d9, type: 2}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 5621822887333563433, guid: 139f38b19184350448b6d3bf2c0321c0, type: 3}
+    - {fileID: 604421966854365968, guid: 139f38b19184350448b6d3bf2c0321c0, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []

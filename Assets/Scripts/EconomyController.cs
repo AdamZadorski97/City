@@ -46,12 +46,12 @@ public class EconomyController : MonoBehaviour
     }
 
     // Add resources
-    public void AddResources(int gold, int wood, int stone, int iron)
+    public void AddResources(ResourcesScriptable cost)
     {
-        currentGold += gold;
-        currentWood += wood;
-        currentStone += stone;
-        currentIron += iron;
+        currentGold += cost.gold;
+        currentWood += cost.wood;
+        currentStone += cost.stone;
+        currentIron += cost.iron;
         UIResourcesController.Instance.UpdateUI();
     }
 

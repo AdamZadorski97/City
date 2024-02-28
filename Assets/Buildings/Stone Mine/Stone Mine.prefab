@@ -52,10 +52,26 @@ PrefabInstance:
       propertyPath: m_Name
       value: Stone Mine
       objectReference: {fileID: 0}
+    - target: {fileID: 5950180889143951200, guid: aad740a0133789a4c89443e605028a57, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 1.115
+      objectReference: {fileID: 0}
+    - target: {fileID: 6518671505825427399, guid: aad740a0133789a4c89443e605028a57, type: 3}
+      propertyPath: m_Size.y
+      value: 1.8977218
+      objectReference: {fileID: 0}
+    - target: {fileID: 6518671505825427399, guid: aad740a0133789a4c89443e605028a57, type: 3}
+      propertyPath: m_Center.y
+      value: 0.025595546
+      objectReference: {fileID: 0}
     - target: {fileID: 8119982134203718433, guid: aad740a0133789a4c89443e605028a57, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: fdbd2276717cce44592be05266dcfdaa, type: 2}
+    - target: {fileID: 8219482692787572342, guid: aad740a0133789a4c89443e605028a57, type: 3}
+      propertyPath: m_text
+      value: Stone Mine
+      objectReference: {fileID: 0}
     - target: {fileID: 8487284849651626790, guid: aad740a0133789a4c89443e605028a57, type: 3}
       propertyPath: m_Mesh
       value: 
@@ -64,7 +80,8 @@ PrefabInstance:
       propertyPath: cost
       value: 
       objectReference: {fileID: 11400000, guid: 58cae88f0b799b04c8b8d667ebbd2438, type: 2}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 4525857802447245103, guid: aad740a0133789a4c89443e605028a57, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []

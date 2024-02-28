@@ -60,7 +60,7 @@ public class UIBuilding : MonoBehaviour
     {
         if (tempBuildingCore != null)
         {
-            Destroy(tempBuildingCore.gameObject);
+            tempBuildingCore.GetComponent<BuildingCore>().DeleteBuilding();
             uiElement.gameObject.SetActive(false);
         }
     }

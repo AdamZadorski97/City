@@ -7,21 +7,11 @@ public class BuildingCore : MonoBehaviour
     public ResourcesScriptable cost;
 
 
-    public bool CheckCanBuy()
+   public void DeleteBuilding()
     {
-        if (EconomyController.Instance.HasEnoughResources(cost))
-        {
-            return true;
-        }
-        else
-        {
-            return false;
-        }
-    }
+        EconomyController.Instance.AddResources(cost);
+        BuildController.Instance.buildings.Remove(this);
 
-
-    private void Start()
-    {
-   
+        Destroy(gameObject);
     }
 }

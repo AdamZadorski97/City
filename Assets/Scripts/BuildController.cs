@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 
@@ -12,6 +13,8 @@ public class BuildController : MonoBehaviour
     private GameObject tempBuildingInstance;
     private Vector3 lastMousePosition;
     public bool isNewBuilding;
+    public List<BuildingCore> buildings;
+
     private void Awake()
     {
         // If there is no instance already, this becomes the singleton instance
@@ -43,6 +46,7 @@ public class BuildController : MonoBehaviour
 
                 {
                     EconomyController.Instance.UseResources(tempBuilding.GetComponent<BuildingCore>().cost);
+               
                     PlaceBuilding();
                     Destroy(tempBuildingInstance);
                     tempBuildingInstance = null;
@@ -195,6 +199,8 @@ public class BuildController : MonoBehaviour
                 Vector3 placementPosition = tempBuildingInstance.transform.position;
                 Quaternion placementRotation = tempBuildingInstance.transform.rotation;
                 GameObject buildingInstance = Instantiate(tempBuilding, placementPosition, placementRotation);
+                PopulationController.Instance.UpdatePopulation();
+                buildings.Add(buildingInstance.GetComponent<BuildingCore>());
             }
             else
             {

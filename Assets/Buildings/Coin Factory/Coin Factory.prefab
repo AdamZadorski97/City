@@ -50,7 +50,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3984015004179839099, guid: aad740a0133789a4c89443e605028a57, type: 3}
       propertyPath: m_Name
-      value: Work
+      value: Coin Factory
+      objectReference: {fileID: 0}
+    - target: {fileID: 5950180889143951200, guid: aad740a0133789a4c89443e605028a57, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 1.169
+      objectReference: {fileID: 0}
+    - target: {fileID: 8219482692787572342, guid: aad740a0133789a4c89443e605028a57, type: 3}
+      propertyPath: m_text
+      value: Con Factory
       objectReference: {fileID: 0}
     - target: {fileID: 8487284849651626790, guid: aad740a0133789a4c89443e605028a57, type: 3}
       propertyPath: m_Mesh
@@ -60,7 +68,8 @@ PrefabInstance:
       propertyPath: cost
       value: 
       objectReference: {fileID: 11400000, guid: 58cae88f0b799b04c8b8d667ebbd2438, type: 2}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 4525857802447245103, guid: aad740a0133789a4c89443e605028a57, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
