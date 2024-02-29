@@ -46,8 +46,9 @@ public class BuildController : MonoBehaviour
 
                 {
                     EconomyController.Instance.UseResources(tempBuilding.GetComponent<BuildingCore>().cost);
-               
+
                     PlaceBuilding();
+               
                     Destroy(tempBuildingInstance);
                     tempBuildingInstance = null;
                 }
@@ -153,7 +154,6 @@ public class BuildController : MonoBehaviour
         Collider buildingCollider = tempBuildingInstance.GetComponent<Collider>();
         if (buildingCollider != null)
         {
-            // Calculate bottom offset for both new and existing buildings
             float bottomOffset = buildingCollider.bounds.extents.y;
             Vector3 adjustedPosition = hit.point + new Vector3(0, bottomOffset, 0);
             tempBuildingInstance.transform.position = adjustedPosition;
@@ -199,8 +199,9 @@ public class BuildController : MonoBehaviour
                 Vector3 placementPosition = tempBuildingInstance.transform.position;
                 Quaternion placementRotation = tempBuildingInstance.transform.rotation;
                 GameObject buildingInstance = Instantiate(tempBuilding, placementPosition, placementRotation);
-                PopulationController.Instance.UpdatePopulation();
                 buildings.Add(buildingInstance.GetComponent<BuildingCore>());
+                buildingInstance.GetComponent<BuildingCore>().isBuildingReady = true;
+                PopulationController.Instance.UpdatePopulation();
             }
             else
             {

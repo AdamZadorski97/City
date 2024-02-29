@@ -7,7 +7,7 @@ public class UIBuilding : MonoBehaviour
     public Transform worldObjectToFollow;
     public Camera cameraToUse;
     public Vector2 offset;
-    public LayerMask buildingLayer; // Define the layer mask for buildings
+    public LayerMask buildingLayer;
     private BuildingCore tempBuildingCore;
     private void Awake()
     {
@@ -15,26 +15,24 @@ public class UIBuilding : MonoBehaviour
         {
             cameraToUse = Camera.main;
         }
-        uiElement.gameObject.SetActive(false); // Initially hide the UI element
+        uiElement.gameObject.SetActive(false);
     }
 
     private void Update()
     {
-        if (Input.GetMouseButtonDown(0)) // Check for left mouse button click
+        if (Input.GetMouseButtonDown(0))
         {
             Ray ray = cameraToUse.ScreenPointToRay(Input.mousePosition);
             RaycastHit hit;
 
             if (Physics.Raycast(ray, out hit, Mathf.Infinity, buildingLayer))
             {
-                // If raycast hits an object on the building layer
-                SetTarget(hit.transform); // Set this object as the target to follow
-                uiElement.gameObject.SetActive(true); // Show the UI element
+                SetTarget(hit.transform);
+                uiElement.gameObject.SetActive(true);
                 tempBuildingCore = hit.transform.gameObject.GetComponent<BuildingCore>();
             }
             else
             {
-                // If raycast does not hit a building
                 Invoke("HideCanvas", 0.3f);
             }
         }

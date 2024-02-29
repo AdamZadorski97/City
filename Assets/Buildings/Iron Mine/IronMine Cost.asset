@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c7b18687b4e9f94b8d0fe02be6686f5, type: 3}
   m_Name: IronMine Cost
   m_EditorClassIdentifier: 
-  money: 5
+  gold: 0
   wood: 5
   stone: 5
   iron: 5
+  population: 10
